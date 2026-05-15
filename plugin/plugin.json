@@ -6,8 +6,8 @@
     "name": "Eudre",
     "email": "adm@kemosoft.com.br"
   },
-  "homepage": "",
-  "repository": "",
+  "homepage": "https://github.com/eudresfs/whatsapp-flows",
+  "repository": "https://github.com/eudresfs/whatsapp-flows",
   "license": "MIT",
   "skills": "./.claude/skills/",
   "tags": ["whatsapp", "flows", "json", "meta", "messaging", "ux", "builder"]
