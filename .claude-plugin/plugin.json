@@ -1,0 +1,14 @@
+{
+  "name": "whatsapp-flows",
+  "description": "Build, validate, audit and debug WhatsApp Flows JSON. Covers the full lifecycle: interviewing requirements, generating valid Flow JSON, running the official validator, auditing UX quality, and debugging broken flows.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Eudre",
+    "email": "adm@kemosoft.com.br"
+  },
+  "homepage": "",
+  "repository": "",
+  "license": "MIT",
+  "skills": "./.claude/skills/",
+  "tags": ["whatsapp", "flows", "json", "meta", "messaging", "ux", "builder"]
+}

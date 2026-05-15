@@ -1,0 +1,5 @@
+node_modules/
+scripts/WAFlowJSONValidator.js
+.whatsapp-flows-config
+*.pyc
+__pycache__/

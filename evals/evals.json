@@ -1,0 +1,23 @@
+{
+  "skill_name": "whatsapp-flows",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Crie um WhatsApp Flow de agendamento médico com 2 telas. Tela 1: usuário escolhe especialidade (Clínico Geral, Cardiologista, Dermatologista, Ortopedista) e seleciona a data preferida. Tela 2: confirmação mostrando os dados escolhidos com botão de confirmar. O flow não usa Data Endpoint.",
+      "expected_output": "Flow JSON completo e válido com version 7.3, 2 screens (ESPECIALIDADE e CONFIRMACAO), routing_model, componentes corretos (RadioButtonsGroup ou Dropdown para especialidade, DatePicker para data), tela terminal com Footer+complete, e bloco de explicação separado.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Tenho esse flow com erros no validator, corrija todos:\n\n```json\n{\n  \"version\": \"7.3\",\n  \"screens\": [\n    {\n      \"id\": \"CADASTRO\",\n      \"title\": \"Seus dados\",\n      \"data\": {\n        \"estados\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"object\" },\n          \"__example__\": [{\"id\": \"sp\", \"title\": \"São Paulo\"}]\n        }\n      },\n      \"layout\": {\n        \"type\": \"SingleColumnLayout\",\n        \"children\": [\n          {\n            \"type\": \"TextInput\",\n            \"name\": \"email\",\n            \"label\": \"E-mail\",\n            \"input-type\": \"email\",\n            \"min-chars\": \"3\",\n            \"max-chars\": \"80\",\n            \"required\": true\n          },\n          {\n            \"type\": \"Dropdown\",\n            \"name\": \"estado\",\n            \"label\": \"Estado\",\n            \"data-source\": \"${data.estados}\",\n            \"required\": true\n          },\n          {\n            \"type\": \"Footer\",\n            \"label\": \"Continuar\",\n            \"on-click-action\": {\n              \"name\": \"navigate\",\n              \"next\": { \"type\": \"screen\", \"name\": \"CONFIRMACAO\" },\n              \"payload\": { \"email\": \"${form.email}\", \"estado\": \"${form.estado}\" }\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"CONFIRMACAO\",\n      \"terminal\": true,\n      \"data\": {\n        \"email\": { \"type\": \"string\", \"__example__\": \"\" },\n        \"estado\": { \"type\": \"string\", \"__example__\": \"\" }\n      },\n      \"layout\": {\n        \"type\": \"SingleColumnLayout\",\n        \"children\": [\n          { \"type\": \"TextBody\", \"text\": \"`'E-mail: ' ${data.email}`\" },\n          { \"type\": \"TextBody\", \"text\": \"`'Estado: ' ${data.estado}`\" },\n          {\n            \"type\": \"Footer\",\n            \"label\": \"Confirmar\",\n            \"on-click-action\": {\n              \"name\": \"navigate\",\n              \"next\": { \"type\": \"screen\", \"name\": \"CONFIRMACAO\" },\n              \"payload\": {}\n            }\n          }\n        ]\n      }\n    }\n  ]\n}\n```",
+      "expected_output": "Identificação de todos os erros: (1) input-type 'email' inválido, (2) min-chars/max-chars como string em vez de number, (3) items sem properties/id no schema de estados, (4) __example__ com string vazia na tela terminal, (5) Footer da tela terminal usando navigate em vez de complete. JSON corrigido com todos os problemas resolvidos.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Preciso de um flow de reserva de hotel com período de estadia. O flow deve ter: tela 1 com seleção do período (check-in e check-out), quarto (Solteiro, Duplo, Suíte) e número de hóspedes (1 a 4). Tela 2 com resumo e confirmação. Versão 7.3, sem Data Endpoint.",
+      "expected_output": "Flow JSON válido com CalendarPicker em modo range (com label, helper-text, required e error-message como objetos {start-date, end-date}), RadioButtonsGroup ou Dropdown para tipo de quarto, TextInput com input-type number para hóspedes, tela terminal com complete. Explicação das escolhas de componentes.",
+      "files": []
+    }
+  ]
+}
