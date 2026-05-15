@@ -49,7 +49,7 @@ Read `references/flow-json-reference.md` before generating. It contains validato
 Work through this before running the validator. These are the most common rejection causes:
 
 **Structure**
-- [ ] Screen IDs: letters and underscores only (`COLETA_DADOS` ✓, `SCREEN_1` ✗, `SCREEN-ONE` ✗)
+- [ ] Screen IDs: letters and underscores only (`COLLECT_DATA` ✓, `SCREEN_1` ✗, `SCREEN-ONE` ✗)
 - [ ] Every screen has `title`
 - [ ] Terminal screen has `terminal: true` and Footer with `"name": "complete"`
 - [ ] Static flow: no `routing_model`, no `data_api_version`
@@ -130,13 +130,13 @@ Broken — static text without single quotes breaks the parser:
 Destination screen must declare every payload field in its `data`:
 
 ```json
-"payload": { "nome": "${form.nome}", "email": "${form.email}" }
+"payload": { "name": "${form.name}", "email": "${form.email}" }
 ```
 
 ```json
 "data": {
-  "nome":  { "type": "string", "__example__": "João Silva" },
-  "email": { "type": "string", "__example__": "joao@example.com" }
+  "name":  { "type": "string", "__example__": "Jane Smith" },
+  "email": { "type": "string", "__example__": "jane@example.com" }
 }
 ```
 
@@ -196,8 +196,8 @@ Payload — send fields separately:
   "version": "7.3",
   "screens": [
     {
-      "id": "COLETA",
-      "title": "Seus dados",
+      "id": "COLLECT",
+      "title": "Your info",
       "data": {},
       "layout": {
         "type": "SingleColumnLayout",
@@ -208,18 +208,18 @@ Payload — send fields separately:
             "children": [
               {
                 "type": "TextInput",
-                "name": "nome",
-                "label": "Nome completo",
+                "name": "name",
+                "label": "Full name",
                 "input-type": "text",
                 "required": true
               },
               {
                 "type": "Footer",
-                "label": "Continuar",
+                "label": "Continue",
                 "on-click-action": {
                   "name": "navigate",
-                  "next": { "type": "screen", "name": "CONFIRMACAO" },
-                  "payload": { "nome": "${form.nome}" }
+                  "next": { "type": "screen", "name": "CONFIRM" },
+                  "payload": { "name": "${form.name}" }
                 }
               }
             ]
@@ -228,11 +228,11 @@ Payload — send fields separately:
       }
     },
     {
-      "id": "CONFIRMACAO",
-      "title": "Pronto!",
+      "id": "CONFIRM",
+      "title": "Done!",
       "terminal": true,
       "data": {
-        "nome": { "type": "string", "__example__": "João Silva" }
+        "name": { "type": "string", "__example__": "Jane Smith" }
       },
       "layout": {
         "type": "SingleColumnLayout",
@@ -243,11 +243,11 @@ Payload — send fields separately:
             "children": [
               {
                 "type": "TextBody",
-                "text": "${data.nome}, seu cadastro foi recebido."
+                "text": "${data.name}, your registration was received."
               },
               {
                 "type": "Footer",
-                "label": "Fechar",
+                "label": "Close",
                 "on-click-action": {
                   "name": "complete",
                   "payload": {}

@@ -22,7 +22,7 @@ node .claude/skills/whatsapp-flows/scripts/load-context.mjs
 
 | Gate | Check | If fail |
 |---|---|---|
-| **Language** | `languageSet` is true in config | Ask developer: "PT-BR ou EN?" then `--set-language` |
+| **Language** | `languageSet` is true in config | Ask developer: "Which language? (PT-BR / EN)" then `--set-language` |
 | **Register** | `registerSet` is true in config | Determine via `interview`; then `--set-register` |
 | **Context** | Running `build`? Interview brief exists | Run `interview` first |
 | **Mutation** | All gates above pass | Do not generate JSON until resolved |
@@ -66,7 +66,7 @@ These apply regardless of register.
 ### Structure
 - `version`: `"7.3"` by default (string, not number)
 - Every screen has `title` — required, no exceptions
-- Screen IDs: letters and underscores only — `COLETA_DADOS` ✓ / `SCREEN_1` ✗ / `SCREEN-ONE` ✗
+- Screen IDs: letters and underscores only — `COLLECT_DATA` ✓ / `SCREEN_1` ✗ / `SCREEN-ONE` ✗
 - Exactly one screen has `terminal: true`; its Footer uses `"name": "complete"`
 - Maximum 1 Form per screen; maximum 1 Footer per screen; Footer is last child of Form
 
@@ -84,8 +84,8 @@ These apply regardless of register.
 
 ### Copy
 - Sentence case on all titles, headings, and CTAs
-- CTAs are verbs: "Confirmar agendamento" not "Confirmação"
-- Helper text explains format, not the label: "Com DDD, ex: 11 98765-4321" not "Digite seu celular"
+- CTAs are verbs: "Confirm booking" not "Confirmation"
+- Helper text explains format, not the label: "With area code, e.g. +1 555-1234" not "Enter your phone number"
 
 ---
 
@@ -93,27 +93,27 @@ These apply regardless of register.
 
 Name each violation and know the fix.
 
-**1. Endpoint desnecessário**
+**1. Unnecessary endpoint**
 Endpoint where all data is known at send time. Adds server complexity and latency for no gain.
 → Remove endpoint; inject data via the API call payload; switch to static register.
 
-**2. Screen sobrecarregada**
+**2. Overloaded screen**
 More than 1 task per screen, or more than 8 input components on a single screen.
 → Split into multiple screens; one task, one goal per screen.
 
-**3. Campo cego**
+**3. Blind field**
 Required field (TextInput, TextArea, DatePicker) with no `helper-text` to explain the expected format.
-→ Add `helper-text` with a concrete example ("Ex: 01/01/1990", "Somente números").
+→ Add `helper-text` with a concrete example ("e.g. 01/01/1990", "Numbers only").
 
-**4. Flow sem terminal**
+**4. Missing terminal**
 No screen with `terminal: true`, or terminal screen's Footer uses `navigate` instead of `complete`.
 → Add a confirmation screen with `terminal: true` and Footer `"name": "complete"`.
 
-**5. Binding em flow static**
+**5. Binding on static flow**
 Dynamic binding `${data.x}` on a static flow with no server to provide values.
 → Either remove the binding and use a literal value, or switch to endpoint register.
 
-**6. Componente errado**
+**6. Wrong component**
 TextInput for long-form text; RadioButtonsGroup for 8+ options; re-echoing server data in the completion payload.
 → TextInput → TextArea for long text. RadioButtonsGroup → Dropdown for 8+ options. Strip server data from completion payload.
 

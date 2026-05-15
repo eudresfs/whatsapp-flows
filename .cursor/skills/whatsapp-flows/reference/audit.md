@@ -48,7 +48,7 @@ Check:
 - Screen titles are action-oriented and concise (≤ 5 words) [–0.5 per weak title]
 - Multi-step flows (>3 screens) show progress in screen titles (e.g. "Passo 1 de 3") [–1 if absent]
 - Terminal screen confirms the completed action (not just "Done") [–1 if vague]
-- CTAs match the action: "Confirmar agora" not "Enviar", "OK" or generic strings [–1 per weak CTA]
+- CTAs match the action: "Confirm booking" not "Submit", "OK" or generic strings [–1 per weak CTA]
 - Completion payload does not include base64 images [–1 if found]
 - Login screen (if any) appears late in the flow, after showing value [–1 if too early]
 

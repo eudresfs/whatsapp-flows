@@ -43,12 +43,12 @@ The rule: use static whenever possible. Only add an endpoint when a screen genui
 
 ## The 6 absolute bans
 
-1. **Endpoint desnecessário** — endpoint where static would suffice → remove server, inject at send time
-2. **Screen sobrecarregada** — >1 task or >8 components per screen → split screens
-3. **Campo cego** — required field with no `helper-text` → add format example
-4. **Flow sem terminal** — no `terminal: true` screen → add confirmation screen
-5. **Binding em flow static** — `${data.x}` with no endpoint → use literal or switch to endpoint
-6. **Componente errado** — TextInput for long text, RadioButtonsGroup for 8+ options → use TextArea, Dropdown
+1. **Unnecessary endpoint** — endpoint where static would suffice → remove server, inject at send time
+2. **Overloaded screen** — >1 task or >8 components per screen → split screens
+3. **Blind field** — required field with no `helper-text` → add format example
+4. **Missing terminal** — no `terminal: true` screen → add confirmation screen
+5. **Binding on static flow** — `${data.x}` with no endpoint → use literal or switch to endpoint
+6. **Wrong component** — TextInput for long text, RadioButtonsGroup for 8+ options → use TextArea, Dropdown
 
 ## Installation
 

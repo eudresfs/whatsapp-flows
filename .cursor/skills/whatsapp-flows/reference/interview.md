@@ -25,7 +25,7 @@ node .claude/skills/whatsapp-flows/scripts/load-context.mjs
 
 If `languageSet` is false, ask:
 
-> "Em qual idioma você quer trabalhar? (PT-BR / EN)"
+> "Which language do you want to work in? (PT-BR / EN)"
 
 Persist the answer:
 

@@ -27,23 +27,23 @@ Cognitive overload causes abandonment. It also makes error handling harder — w
 
 ### Screen titles orient, CTAs commit
 
-Screen title: tells the user where they are. Short, action-framed. "Dados pessoais", "Escolha o plano", "Confirmação".
+Screen title: tells the user where they are. Short, action-framed. "Personal info", "Choose a plan", "Confirmation".
 
-CTA (Footer label): commits the user to the next action. Make it specific. "Confirmar agendamento" beats "Continuar". "Enviar dados" beats "OK".
+CTA (Footer label): commits the user to the next action. Make it specific. "Confirm booking" beats "Continue". "Submit" beats "OK".
 
 ### Progress indication for long flows
 
 If the flow has more than 3 screens and users don't know it, they'll abandon thinking it's endless.
 
 Options:
-- Screen titles: "Passo 1 de 3 — Seus dados"
-- A `TextSubheading` component at the top of each screen: "Etapa 2 de 4"
+- Screen titles: "Step 1 of 3 — Your info"
+- A `TextSubheading` component at the top of each screen: "Step 2 of 4"
 
 ### Terminal screen must confirm
 
 The terminal screen is the user's receipt. It must:
-1. Confirm what was done ("Seu agendamento foi confirmado")
-2. Set expectations for next steps ("Você receberá uma mensagem de confirmação em breve")
+1. Confirm what was done ("Your appointment has been confirmed")
+2. Set expectations for next steps ("You'll receive a confirmation message shortly")
 3. Provide a trust anchor (business logo in footer is automatic; optionally add support CTA via EmbeddedLink)
 
 Generic terminals ("Obrigado!") create anxiety. The user doesn't know if the action was saved.
@@ -56,32 +56,32 @@ Generic terminals ("Obrigado!") create anxiety. The user doesn't know if the act
 
 Screen titles, headings, CTAs, helper text — all sentence case. No ALL CAPS. No Title Case For Every Word.
 
-✓ "Confirmar agendamento"
-✗ "CONFIRMAR AGENDAMENTO"
-✗ "Confirmar Agendamento"
+✓ "Confirm booking"
+✗ "CONFIRM BOOKING"
+✗ "Confirm Booking"
 
 ### CTAs are verbs, not nouns
 
-✓ "Confirmar" / "Escolher plano" / "Enviar dados"
-✗ "Confirmação" / "Plano" / "Envio"
+✓ "Confirm" / "Choose plan" / "Submit"
+✗ "Confirmation" / "Plan" / "Submission"
 
 ### Helper text explains format, not the label
 
 The label already says what the field is. Helper text says how to fill it.
 
-Label: "Celular"
-Helper text: "Com DDD, ex: 11 98765-4321"
+Label: "Phone"
+Helper text: "With area code, e.g. +1 555-1234"
 
 Not:
-Helper text: "Digite seu número de celular" ← redundant
+Helper text: "Enter your phone number" ← redundant
 
 ### Error messages are human
 
 Validator error messages in the JSON are shown to users when validation fails client-side.
 
-✓ "Insira um e-mail válido, ex: nome@email.com"
+✓ "Enter a valid email, e.g. name@email.com"
 ✗ "Email format invalid"
-✗ "Campo inválido"
+✗ "Invalid field"
 
 ---
 
@@ -103,7 +103,7 @@ When collecting sensitive data (CPF, passwords, health info):
 
 ### Support escape hatch
 
-Long or complex flows should have a way for the user to reach support if confused. Use `EmbeddedLink` or `OptIn` with a "Preciso de ajuda" link as a secondary action before the main CTA.
+Long or complex flows should have a way for the user to reach support if confused. Use `EmbeddedLink` or `OptIn` with a "Need help?" link as a secondary action before the main CTA.
 
 ---
 
