@@ -1,16 +1,18 @@
 {
-  "$schema": "https://claude.ai/plugin-schema/marketplace.json",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "whatsapp-flows",
-  "displayName": "WhatsApp Flows",
-  "description": "Build, validate, audit and debug WhatsApp Flows JSON. Covers the full lifecycle from requirements gathering to validated delivery.",
-  "version": "1.0.0",
-  "category": "developer-tools",
-  "tags": ["whatsapp", "flows", "json", "meta", "messaging", "ux"],
-  "commands": [
-    { "name": "interview", "description": "Gather context before building — language, endpoint type, screens brief" },
-    { "name": "build",     "description": "Generate complete, valid Flow JSON from interview brief" },
-    { "name": "validate",  "description": "Run official validator + structural checks" },
-    { "name": "audit",     "description": "Score flow quality across structure, UX, errors, performance, best practices" },
-    { "name": "debug",     "description": "Diagnose broken or unexpected flow behavior" }
+  "description": "Build, validate, audit and debug WhatsApp Flows JSON. Full lifecycle from requirements gathering to validated delivery.",
+  "owner": {
+    "name": "Eudre",
+    "email": "adm@kemosoft.com.br",
+    "url": "https://github.com/eudresfs"
+  },
+  "plugins": [
+    {
+      "name": "whatsapp-flows",
+      "source": "./",
+      "description": "Build, validate, audit and debug WhatsApp Flows JSON. 1 skill, 5 commands, register split, named anti-patterns.",
+      "category": "developer-tools"
+    }
   ]
 }
