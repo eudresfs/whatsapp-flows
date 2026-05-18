@@ -14,7 +14,7 @@ The path to this file tells you where the skill lives. The scripts are at `<SKIL
 
 ```bash
 node --version 2>/dev/null && \
-  ls <SKILL_DIR>/scripts/WAFlowJSONValidator.js 2>/dev/null && \
+  (ls <SKILL_DIR>/scripts/WAFlowJSONValidator_bundle.js 2>/dev/null || ls <SKILL_DIR>/scripts/WAFlowJSONValidator.js 2>/dev/null) && \
   echo "validator=available" || echo "validator=unavailable"
 ```
 
@@ -28,7 +28,9 @@ node --version 2>/dev/null && \
 mkdir -p /tmp/wf-validator
 cp <SKILL_DIR>/scripts/run_validator.js /tmp/wf-validator/
 cp <SKILL_DIR>/scripts/package.json     /tmp/wf-validator/
-cp <SKILL_DIR>/scripts/WAFlowJSONValidator.js /tmp/wf-validator/
+# Copy whichever validator source exists (bundle preferred, legacy fallback)
+cp <SKILL_DIR>/scripts/WAFlowJSONValidator_bundle.js /tmp/wf-validator/ 2>/dev/null
+cp <SKILL_DIR>/scripts/WAFlowJSONValidator.js        /tmp/wf-validator/ 2>/dev/null
 cd /tmp/wf-validator && npm install --silent
 ```
 
@@ -78,7 +80,7 @@ If an error is not in the reference, inspect `run_validator.js` directly searchi
 
 Print this message first:
 ```
-⚠️ WAFlowJSONValidator.js not found. Running structural checks only.
+⚠️ Validator source not found (looked for WAFlowJSONValidator_bundle.js and WAFlowJSONValidator.js). Running structural checks only.
 To get the full validator, see scripts/README.md.
 ```
 

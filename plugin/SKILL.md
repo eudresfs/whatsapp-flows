@@ -168,8 +168,8 @@ Source material (not loaded at runtime — for developer reference):
 
 ## Validator
 
-The official Meta validator (`scripts/WAFlowJSONValidator.js`) catches semantic errors that structural checks miss. Always attempt to run it. If the binary is absent, run structural checks and note the limitation.
+The official Meta validator (`scripts/WAFlowJSONValidator_bundle.js`, with legacy fallback to `scripts/WAFlowJSONValidator.js`) catches semantic errors that structural checks miss. Always attempt to run it. If neither file is present, run structural checks and note the limitation.
 
-How to obtain the binary: `scripts/README.md`.
+How to obtain the bundle: `scripts/README.md`.
 
-`validate` handles the absent-binary case gracefully — it does not block delivery.
+`validate` handles the absent-bundle case gracefully — it does not block delivery.

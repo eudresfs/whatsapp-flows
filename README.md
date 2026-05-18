@@ -73,11 +73,11 @@ git clone https://github.com/eudresfs/whatsapp-flows
 
 ## Validator
 
-The official Meta Flow JSON validator (`WAFlowJSONValidator.js`) catches semantic errors that structural checks miss. It is not included in this repo (proprietary binary extracted from Meta's Flow Builder).
+The official Meta Flow JSON validator (`scripts/WAFlowJSONValidator_bundle.js`) catches semantic errors that structural checks miss. It is not included in this repo (proprietary code extracted from Meta's Flow Builder web app).
 
 To obtain it: see [`scripts/README.md`](scripts/README.md).
 
-Without the binary, `validate` runs structural checks and reports the limitation clearly. All other commands work normally.
+Without the bundle, `validate` runs structural checks and reports the limitation clearly. All other commands work normally.
 
 ## Structure
 

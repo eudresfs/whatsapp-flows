@@ -368,17 +368,21 @@ global.babelHelpers = {
 };
 
 // ── Load validator source ────────────────────────────────────────────────────
-const VALIDATOR_PATH = path.join(__dirname, 'WAFlowJSONValidator.js');
+// Prefer the full bundle (200+ __d modules) if present; fall back to legacy single-file extraction.
+const BUNDLE_PATH = path.join(__dirname, 'WAFlowJSONValidator_bundle.js');
+const LEGACY_PATH = path.join(__dirname, 'WAFlowJSONValidator.js');
+const VALIDATOR_PATH = fs.existsSync(BUNDLE_PATH) ? BUNDLE_PATH : LEGACY_PATH;
 
 if (!fs.existsSync(VALIDATOR_PATH)) {
-  console.error('⚠️  WAFlowJSONValidator.js not found at: ' + VALIDATOR_PATH);
+  console.error('⚠️  Validator source not found. Looked for:');
+  console.error('     ' + BUNDLE_PATH);
+  console.error('     ' + LEGACY_PATH);
   console.error('');
-  console.error('To obtain the binary:');
+  console.error('To obtain the bundle:');
   console.error('  1. Open https://business.facebook.com/wa/manage/flows/ in Chrome (logged in)');
-  console.error('  2. DevTools → Sources → Search (Ctrl+Shift+F) → search "WAFlowJSONValidator"');
-  console.error('  3. Open the bundle file that contains it');
-  console.error('  4. Copy the full __d("WAFlowJSONValidator", ...) block');
-  console.error('  5. Save as scripts/WAFlowJSONValidator.js');
+  console.error('  2. DevTools → Sources → Search (Ctrl+Shift+F) → search "WAFlowJSONValidatorChainV703"');
+  console.error('  3. Open the bundle file that contains it (usually FlowsBuilderPageRoute.bundle...)');
+  console.error('  4. Save the entire bundle file as scripts/WAFlowJSONValidator_bundle.js');
   console.error('');
   console.error('See scripts/README.md for full instructions.');
   process.exit(2);
